@@ -12,10 +12,7 @@
   </head>
   <body>
     <main class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
-      <div class="perspective">
-        <div id="calculator-main" class="calculator-container" onclick="flipCalculator()">
-          <!-- Frente da calculadora -->
-          <div class="calculator-face calculator-front">
+      
             <div class="calculator">
       <h1>Calculadora</h1>
       <form
@@ -208,8 +205,7 @@
               type="button"
               value="="
               class="btn btn-equals calc-btn w-100"
-              onclick="calculateResult()"
-            />
+               onclick="try { calculator.display.value = eval(calculator.display.value) } catch(e) { calculator.display.value = 'Error' }"/>
           </div>
         </div>
 
