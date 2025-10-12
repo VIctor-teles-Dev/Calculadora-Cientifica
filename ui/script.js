@@ -2,6 +2,8 @@
 let calculatorState = {
   shouldClearDisplay: false,
   lastResult: false,
+  displayExpression: "", // Expressão mostrada no display (com símbolos)
+  calculationExpression: "", // Expressão para cálculo (com funções Math)
 };
 
 // Função para verificar se o display deve ser limpo antes de adicionar novo input
@@ -186,6 +188,92 @@ function addDecimal() {
   }
 }
 
+// Função para adicionar raiz quadrada com símbolo visual
+function addSquareRoot() {
+  const display = document.calculator.display;
+  const currentValue = display.value;
+
+  // Se deve limpar o display, substitui o valor atual
+  if (shouldClearDisplay(currentValue)) {
+    display.value = "√(";
+    calculatorState.shouldClearDisplay = false;
+    calculatorState.lastResult = false;
+  } else {
+    // Caso contrário, adiciona ao valor atual
+    display.value += "√(";
+  }
+}
+
+// Função para adicionar log com símbolo visual
+function addLog() {
+  const display = document.calculator.display;
+  const currentValue = display.value;
+
+  // Se deve limpar o display, substitui o valor atual
+  if (shouldClearDisplay(currentValue)) {
+    display.value = "log(";
+    calculatorState.shouldClearDisplay = false;
+    calculatorState.lastResult = false;
+  } else {
+    // Caso contrário, adiciona ao valor atual
+    display.value += "log(";
+  }
+}
+
+// Função para adicionar ln com símbolo visual
+function addLn() {
+  const display = document.calculator.display;
+  const currentValue = display.value;
+
+  // Se deve limpar o display, substitui o valor atual
+  if (shouldClearDisplay(currentValue)) {
+    display.value = "ln(";
+    calculatorState.shouldClearDisplay = false;
+    calculatorState.lastResult = false;
+  } else {
+    // Caso contrário, adiciona ao valor atual
+    display.value += "ln(";
+  }
+}
+
+// Função para converter expressão de display para expressão de cálculo
+function convertToCalculationExpression(displayExpression) {
+  let calcExpression = displayExpression;
+
+  // Substitui símbolos visuais pelas funções Math correspondentes
+  calcExpression = calcExpression.replace(/√\(/g, "Math.sqrt(");
+  calcExpression = calcExpression.replace(/log\(/g, "Math.log10(");
+  calcExpression = calcExpression.replace(/ln\(/g, "Math.log(");
+
+  return calcExpression;
+}
+
+// Função para calcular resultado
+function calculateResult() {
+  const display = document.calculator.display;
+  const displayExpression = display.value;
+
+  try {
+    // Converte a expressão do display para expressão de cálculo
+    const calculationExpression =
+      convertToCalculationExpression(displayExpression);
+
+    // Avalia a expressão de cálculo
+    const result = eval(calculationExpression);
+
+    // Mostra o resultado no display
+    display.value = result.toString();
+
+    // Atualiza o estado
+    calculatorState.shouldClearDisplay = true;
+    calculatorState.lastResult = true;
+  } catch (e) {
+    display.value = "Error";
+    calculatorState.shouldClearDisplay = true;
+    calculatorState.lastResult = false;
+  }
+}
+
 // Event listeners para capturar teclado (opcional)
 document.addEventListener("keydown", function (event) {
   const key = event.key;
@@ -197,16 +285,16 @@ document.addEventListener("keydown", function (event) {
   }
   // Operadores
   else if (key === "+") {
-    addOperator("+");
+    onOperatorClick("+");
     event.preventDefault();
   } else if (key === "-") {
-    addOperator("-");
+    onOperatorClick("-");
     event.preventDefault();
   } else if (key === "*") {
-    addOperator("×");
+    onOperatorClick("*");
     event.preventDefault();
   } else if (key === "/") {
-    addOperator("/");
+    onOperatorClick("/");
     event.preventDefault();
   }
   // Enter ou = para calcular
@@ -284,13 +372,8 @@ function validateInput(input) {
   const value = input.value;
   const cursorPosition = input.selectionStart;
 
-  // Remove caracteres inválidos, mantendo apenas números, operadores básicos e funções Math
-  let cleanValue = value.replace(/[^0-9+\-*/.()MathsqrtlogE ]/g, "");
-
-  // Mantém funções Math completas
-  cleanValue = cleanValue.replace(/Math\.sqrt\(/g, "Math.sqrt(");
-  cleanValue = cleanValue.replace(/Math\.log10\(/g, "Math.log10(");
-  cleanValue = cleanValue.replace(/Math\.log\(/g, "Math.log(");
+  // Remove caracteres inválidos, mantendo apenas números, operadores básicos e símbolos de funções
+  let cleanValue = value.replace(/[^0-9+\-*/.()√log\s]/g, "");
 
   // Remove operadores duplicados consecutivos
   cleanValue = cleanValue.replace(/([+\-*/])\1+/g, "$1");

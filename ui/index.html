@@ -8,7 +8,8 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-   
+    <link rel="stylesheet" href="style.css" />
+  
   </head>
   <body>
     <main class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
@@ -197,7 +198,7 @@
               type="button"
               value="√"
               class="btn btn-function calc-btn w-100"
-              onclick="calculator.display.value += 'Math.sqrt('"
+              onclick="addSquareRoot()"
             />
           </div>
           <div class="col">
@@ -205,7 +206,8 @@
               type="button"
               value="="
               class="btn btn-equals calc-btn w-100"
-               onclick="try { calculator.display.value = eval(calculator.display.value) } catch(e) { calculator.display.value = 'Error' }"/>
+              onclick="calculateResult()"
+            />
           </div>
         </div>
 
@@ -216,7 +218,7 @@
               type="button"
               value="log"
               class="btn btn-function calc-btn w-100"
-              onclick="calculator.display.value += 'Math.log10('"
+              onclick="addLog()"
             />
           </div>
           <div class="col">
@@ -224,7 +226,7 @@
               type="button"
               value="ln"
               class="btn btn-function calc-btn w-100"
-              onclick="calculator.display.value += 'Math.log('"
+              onclick="addLn()"
             />
           </div>
           <div class="col">
