@@ -1,8 +1,7 @@
+# Comandos:
+###  todo comando npm devera ser precedido de npm run (comando):
+## para compilar o react, devemos utilizar o comando dev:react
+## para compilar o electron, devemos utilizar o comando transpile:electron e rodaremos a aplicacao com o comando dev:electron.
+### No ambiente de desenvolvimento, o servidor vite devera estar operando para que o aplicativo electron funcione
 
-# --- INSTRUÇÕES ---
-## 1. Certifique-se de ter o Julia instalado.
-## 2. Abra o terminal do Julia (REPL).
-## 3. Instale o Blink digitando: using Pkg; Pkg.add("Blink")
-## 4. Navegue até esta pasta no seu terminal: cd("caminho/para/Calculadora")
-## 5. Execute o script com: include("calculator.jl")
-# ------------------
+

@@ -1,0 +1,29 @@
+import {app, BrowserWindow} from 'electron'
+import path from 'path'
+import {isDev} from './util.js'
+
+
+
+
+app.on('ready', () => {
+     const mainWindow = new BrowserWindow({
+          title: "Calculadora Julia",
+          width: 480,
+          height: 750,
+          frame: false,
+          transparent: true,
+          resizable: false, // impede que a janela seja redimensionada
+          webPreferences: {
+               nodeIntegration: true
+          }
+     })
+     if (isDev()) {
+          mainWindow.loadURL('http://localhost:5123');
+     }
+         else{
+           mainWindow.loadFile(path.join(app.getAppPath() + '/dist-react/index.html'))
+         }
+     }
+    
+
+)

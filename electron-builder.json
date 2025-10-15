@@ -1,0 +1,16 @@
+{
+  "appId": "com.victordev.calculadora-cientifica",
+  "files": ["dist-electron", "dist-react"],
+  "icon":"desktopIcon.png",
+
+  "mac":       {
+     "target": "dmg"
+  },
+  "linux":     {
+     "target": "AppImage",
+     "category": "developer-tools"
+  },
+  "win":       {
+     "target": ["portable", "msi"]
+  }
+}

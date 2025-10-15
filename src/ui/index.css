@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'BigBlueTermPlus Nerd Font Propo'; /* 1. Dê um nome para a fonte */
+  src: url('/fonts/BigBlueTerm437NerdFontPropo-Regular.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+
+
