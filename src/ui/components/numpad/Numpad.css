@@ -2,11 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  background-color: rgb(255, 255, 255);
   padding: 15px;
   border-radius: 15px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-}
+  }
 
 .numpad-row {
   display: flex;
@@ -17,8 +15,7 @@
   font-family: 'BigBlueTermPlus Nerd Font Propo', monospace; 
   width: 60px;
   height: 60px;
-  font-size: 80%; 
-  position: relative;
+  font-size: 80%;   
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -26,8 +23,11 @@
   color: white;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  background-color: transparent;
-  user-select: none;
+  user-select: none;  
+   mask: url('./assets/numpad_button.png') no-repeat center;
+  -webkit-mask: url('./assets/numpad_button.png') no-repeat center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
 }
 
 .numpad-button::before {
@@ -38,21 +38,21 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  
-  background-color: #646464; 
+  background-color: #685b6e; 
   transition: background-color 0.2s ease-in-out; /* Adiciona transição suave para o hover */
-  clip-path: polygon(
-    50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%,
-    50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
-  );
+ 
 }
 .numpad-button.operator::before {
-  background-color: #c9a0dc; 
+  background-color: rgb(206, 100, 255); 
 }
 
+.numpad-button:hover {
+  color: #e48aff;
+
+}
 
 .numpad-button:hover::before {
-  background-color: #333; 
+  background-color: #120030; 
 }
 
 .numpad-button:active::before {

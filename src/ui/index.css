@@ -8,10 +8,34 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+   overflow: hidden;
+   
+  
 }
+/* App.css */
+
+.calculator-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;  
+  
+  filter: url(/public/img/image.png);
+  filter: hue-rotate(340deg);
+  background-image: url('/public/img/image.png');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  box-sizing: border-box; 
+  margin: -25px;
+ 
+}
+
 
 
 

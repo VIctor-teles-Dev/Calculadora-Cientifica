@@ -1,6 +1,7 @@
-import React, { useState, type FC } from "react";
+import { useState, type FC } from "react";
 import Numpad from "./components/numpad/Numpad";
 import Display from "./components/display/Display"; // 1. Importa o novo componente Display
+
 import "./App.css";
 
 const App: FC = () => {
@@ -20,7 +21,7 @@ const App: FC = () => {
         setDisplay("Error");
       }
     } else {
-      // Evita múltiplos zeros no início ou operadores
+      
       if (
         (value === "0" && display === "") ||
         (["X", "÷", "+", "-"].includes(value) && display === "")
@@ -32,11 +33,14 @@ const App: FC = () => {
   };
 
   return (
+
     <div className="calculator-container">
-      {/* 2. Substitui o div antigo pelo novo componente */}
-      <Display value={display || "0"} />
-      <Numpad onButtonClick={handleButtonClick} />
+     
+        <Display value={display || "0"} />
+        <Numpad onButtonClick={handleButtonClick} />
+     
     </div>
+   
   );
 };
 

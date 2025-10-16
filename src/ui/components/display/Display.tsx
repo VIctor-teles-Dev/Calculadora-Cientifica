@@ -1,4 +1,4 @@
-import React, { type FC } from "react";
+import  { type FC } from "react";
 import "./Display.css"; // Importa a estilização própria do componente
 
 // Interface para definir as props que o componente espera

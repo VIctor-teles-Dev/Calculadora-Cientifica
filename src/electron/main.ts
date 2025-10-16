@@ -9,7 +9,7 @@ app.on('ready', () => {
      const mainWindow = new BrowserWindow({
           title: "Calculadora Julia",
           width: 480,
-          height: 750,
+          height: 850,
           frame: false,
           transparent: true,
           resizable: false, // impede que a janela seja redimensionada

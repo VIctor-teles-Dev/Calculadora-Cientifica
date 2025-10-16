@@ -1,5 +1,6 @@
-import React, { type FC } from "react";
+import { type FC } from "react";
 import "./Numpad.css"; // O CSS não muda
+
 
 // 1. Definimos uma interface para as props do componente
 interface NumpadProps {
@@ -20,7 +21,7 @@ const Numpad: FC<NumpadProps> = ({ onButtonClick }) => {
       {buttons.map((row, rowIndex) => (
         <div key={rowIndex} className="numpad-row">
           {row.map((button, colIndex) => (
-            <div
+            <div 
               key={colIndex}
               className={`numpad-button ${
                 isNaN(Number(button)) && button !== "." ? "operator" : ""
@@ -28,6 +29,7 @@ const Numpad: FC<NumpadProps> = ({ onButtonClick }) => {
               onClick={() => onButtonClick(button)}
             >
               {button}
+              
             </div>
           ))}
         </div>
